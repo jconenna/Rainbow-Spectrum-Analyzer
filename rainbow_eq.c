@@ -250,13 +250,13 @@ for (uint8_t i = 0; i < 7; i++)
 	ADCSRA |= (1<<ADSC);
 	
 	// wait for conversion to complete
-    while(ADCSRA & (1<<ADSC));
+        while(ADCSRA & (1<<ADSC));
 
-    // add level to filter
+        // add level to filter
 	for(uint8_t j = 0; j < 3; j++)
 		filter_levels[i][j] = filter_levels[i][j+1];
 	
-    filter_levels[i][3] = ADC >> 2;
+        filter_levels[i][3] = ADC >> 2;
 	
 	PORTF |= (1 << STR);
 	_delay_us(40);
